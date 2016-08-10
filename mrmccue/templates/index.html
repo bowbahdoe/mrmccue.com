@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="education history">
+    <meta name="author" content="Ethan McCue">
+
+    <title>mrmccue.com</title>
+    <link href = "{{ url_for('static', filename = 'css/navbar.css') }}"
+          rel = "stylesheet"
+    />
+    {% block stylesheets %}
+
+    {% endblock %}}
+
+  </head>
+
+  <body style="background-color:#e6e6ef;">
+    <ul class="navbar-ul">
+      <li class="navbar-li"><a class="navbar-a active" href="/">Home</a></li>
+      <li class="navbar-li dropdown">
+        <a href="#" class="navbar-a dropbtn">Projects</a>
+        <div class="dropdown-content">
+          <a class="navbar-a" href="/keys">Keys</a>
+          <a class="navbar-a" href="/emojilang">The Emoji Programming Language</a>
+        </div>
+      </li>
+      <li class="navbar-li"><a class="navbar-a" href="#news">Timmy's Birthday</a></li>
+
+      <li class ="navbar-login"><a class="navbar-a" href="#news">Login</a></li>
+    </ul>
+
+
+
+    {% block body %}
+
+    {% endblock %}
+
+    <script type = "text/javascript"
+            src  = "{{ url_for('static', filename = 'js/jquery.js') }}" >
+    </script>
+
+    {% block javascript %}
+
+    {% endblock %}}
+
+  </body>
+
+
+</html>
