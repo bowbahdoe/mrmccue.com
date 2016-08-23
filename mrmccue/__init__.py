@@ -2,7 +2,22 @@
 Starting point for execution of the server
 '''
 
+import warnings
+import mrmccue.helpers
+import flask
 from flask import Flask
+
+#####################################################
+# Flask MongoEngine Currently has an annoying       #
+# warning about ExtDepreciation, so we disable that #
+# Then import MongoEngine, which we use for the db  #
+#####################################################
+
+from flask.exthook import ExtDeprecationWarning
+
+with warnings.catch_warnings():
+    warnings.simplefilter('ignore', ExtDeprecationWarning)
+    from flask_mongoengine import MongoEngine
 
 ###########################################################
 # The main app instance                                   #
@@ -11,6 +26,25 @@ from flask import Flask
 ###########################################################
 app = Flask(__name__)
 
-import mrmccue.views
+############################################################
+# Load in configuration instead of defining explicitly     #
+# within this file. consult the file if a change is needed #
+############################################################
+app.config.from_pyfile('config.py')
 
-app.run(debug=True)
+#######################################################################
+# When Jinja renders a template it doesnt care about whitespace       #
+# So if we are debugging, We want the document to be nicely formatted #
+#                                                                     #
+# On the flipside, if we aren't debugging, we want to minimize the    #
+# size of the html getting sent out                                   #
+#######################################################################
+if app.debug:
+    flask.render_template = helpers.prettify(flask.render_template)
+else:
+    flask.render_template = helpers.uglify(flask.render_template)
+
+db = MongoEngine(app)
+app.static_url_path = '/'
+
+import mrmccue.views

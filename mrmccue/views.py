@@ -1,5 +1,8 @@
 from mrmccue import app
-from flask import render_template
+from mrmccue.forms.login import LoginForm, RegistrationForm
+from mrmccue.models.user import User
+from mrmccue import auth, helpers
+from flask import render_template, redirect
 import collections
 
 @app.route('/')
@@ -20,6 +23,25 @@ def keys():
     context = {'download_links': download_links}
     return render_template('projects/keys.html', **context)
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        new_user = User('de@ffr.com', form.username.data, form.password.data)
+        new_user.save()
+        return redirect('/')
+    return render_template('login.html',
+                           title='Sign In',
+                           form=form)
+@app.route('/register', methods = ['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        auth.register_user(form.username.data,
+                           form.password.data)
+        return redirect('/')
+    return render_template('register.html',
+                           form=form)
 @app.errorhandler(404)
 def page_not_found(*args, **kwargs):
-    return render_template('404.html')
+    return render_template('error.html', **{'type': 404})

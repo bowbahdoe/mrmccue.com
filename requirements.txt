@@ -1,2 +1,4 @@
 flask-mongoengine
 Flask-Assets
+bcrypt
+bs4
