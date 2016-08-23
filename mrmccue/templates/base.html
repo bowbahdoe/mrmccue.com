@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="education history"/>
+    <meta name="author" content="Ethan McCue"/>
+
+    <title>{% block title %} mrmccue.com {% endblock %}</title>
+
+    <link href = "/static/css/content.css" rel = "stylesheet" />
+    <link href = "/static/css/navbar.css"  rel = "stylesheet" />
+    {% block stylesheets %}
+
+    {% endblock %}
+
+    <script src="/js/jquery.js"></script>
+    {% block head_javascript %}
+
+    {% endblock %}
+
+  </head>
+
+  <body style="background-color:#e6e6ef;">
+    <ul class="navbar-ul">
+      <li class="navbar-li"><a class="navbar-a active" href="/">Home</a></li>
+      <li class="navbar-li dropdown">
+        <a href="#" class="navbar-a dropbtn">Projects</a>
+        <div class="dropdown-content">
+          <a class="navbar-a" href="/keys">Keys</a>
+          <a class="navbar-a" href="/emojilang">The Emoji Programming Language</a>
+        </div>
+      </li>
+
+      <li class="navbar-li"><a class="navbar-a" href="/tortoise">Wheel of Tortoise</a></li>
+
+      <li class="navbar-li dropdown">
+        <a href="#" class="navbar-a dropbtn">Games</a>
+        <div class="dropdown-content">
+          <a class="navbar-a" href="/games/timmy">Timmy&#39;s Birthday</a>
+        </div>
+      </li>
+
+      <li class ="navbar-login" id="login_button"><a class="navbar-a" href="/login">Login</a></li>
+    </ul>
+
+
+    <div id="content">
+    {% block content %}
+
+    {% endblock %}
+    </div>
+
+    <script src="/static/js/login.js"></script>
+
+    {% block foot_javascript %}
+
+    {% endblock %}
+
+  </body>
+
+
+</html>

@@ -1,13 +1,13 @@
-{% extends "index.html" %}
+{% extends "base.html" %}
 
-
-{% block body %}
+{% block content %}
 <h1> Keys </h1>
 <h3> Downloads </h3>
 <ul>
   {% for download_link in download_links %}
   <li> <a href="{{ download_link.url }}"> {{ download_link.name }}</li>
   {% endfor %}
+
 </ul>
 
 {% endblock %}

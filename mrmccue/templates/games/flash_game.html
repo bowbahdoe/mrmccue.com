@@ -1,0 +1,15 @@
+{% extends "games/game.html" %}
+
+{% block head_javascript %}
+  {{ super() }}
+  <script type="text/javascript" src="{{ flash_runner }}"></script>
+  <script type="text/javascript">
+    swfobject.embedSWF("{{ flash_source }}", "flash_game", {{ game_width }}, {{ game_height }},"9.0.0");
+  </script>
+{% endblock head_javascript %}
+
+{% block game_content %}
+<center>
+  <div id="flash_game"> Game could not load. It requires flash</div>
+</center>
+{% endblock game_content %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 id="game_title"> {{ game_title }}</h1>
+  <div id="game_content">
+    {% block game_content %}
+    {% endblock game_content %}
+  </div>
+{% endblock content %}
