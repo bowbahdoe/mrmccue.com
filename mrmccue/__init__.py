@@ -44,7 +44,15 @@ if app.debug:
 else:
     flask.render_template = helpers.uglify(flask.render_template)
 
+###############################################################
+# Sets the variable db to represent our connection to MongoDB #
+# This is needed by blueprints that want to define their own  #
+# models                                                      #
+###############################################################
 db = MongoEngine(app)
 app.static_url_path = '/'
+
+from location_tracker.views import location_tracker
+app.register_blueprint(location_tracker)
 
 import mrmccue.views
