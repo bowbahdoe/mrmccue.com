@@ -12,6 +12,31 @@ location_tracker = Blueprint('location-tracker')
 ######################################################################
 _API = Api(location_tracker)
 
+class Location(Resource):
+    def get(self):
+        '''
+        Fetches the most Recent Location
+        '''
+        most_recent_location = LocationModel.objects.order_by('-id').first()
+        return {
+            "latitude" : most_recent_location.latitude,
+            "longitude": most_recent_location.longitude,
+            "time_visited": most_recent_location.time_visited
+        }
+
+    def put(self, latitude: float, longitude: float):
+        '''
+        stores a location given as latitude and longitude
+        '''
+        new_object = LocationModel()
+        new_object.latitude = latitude
+        new_object.longitude = longitude
+        new_object.time_visited = datetime.now()
+        new_object.save()
+
+#######################################
+# implicitly adds it to the blueprint #
+#######################################
 _API.add_resource(Location,'/ethans_location/<float:latitude><float:longitude>')
 
 

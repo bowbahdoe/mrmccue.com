@@ -54,5 +54,3 @@ app.static_url_path = '/'
 
 from location_tracker.views import location_tracker
 app.register_blueprint(location_tracker)
-
-import mrmccue.views
