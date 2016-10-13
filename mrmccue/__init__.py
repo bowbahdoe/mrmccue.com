@@ -5,7 +5,7 @@ Starting point for execution of the server
 import warnings
 import mrmccue.helpers
 import flask
-from flask import Flask
+from flask import Flask, render_template
 from flask_security import Security, MongoEngineUserDatastore
 
 #####################################################
@@ -61,7 +61,10 @@ from mrmccue.models.user import User, Role
 
 user_datastore = MongoEngineUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
-app.static_url_path = '/'
 
 from location_tracker.views import location_tracker
 app.register_blueprint(location_tracker,url_prefix='/api')
+
+@app.route('/')
+def index():
+    return render_template('index.html')

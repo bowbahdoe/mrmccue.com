@@ -9,13 +9,11 @@
 
     <title>{% block title %} mrmccue.com {% endblock %}</title>
 
-    <link href = "/static/css/content.css" rel = "stylesheet" />
     <link href = "/static/css/navbar.css"  rel = "stylesheet" />
     {% block stylesheets %}
 
     {% endblock %}
 
-    <script src="/js/jquery.js"></script>
     {% block head_javascript %}
 
     {% endblock %}
@@ -42,7 +40,7 @@
         </div>
       </li>
 
-      <li class ="navbar-login" id="login_button"><a class="navbar-a" href="/login">Login</a></li>
+      <li class ="navbar-login" id="login_button"><a class="navbar-a" href="/security/login">Login</a></li>
     </ul>
 
 
@@ -51,8 +49,6 @@
 
     {% endblock %}
     </div>
-
-    <script src="/static/js/login.js"></script>
 
     {% block foot_javascript %}
 
