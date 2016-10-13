@@ -12,3 +12,8 @@ MONGODB_SETTINGS = {
     'host': 'localhost',
     'port': 27017
 }
+
+# Flask-Security config
+SECURITY_REGISTERABLE = True
+SECURITY_RECOVERABLE  = True
+SECURITY_CHANGEABLE   = True

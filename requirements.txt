@@ -1,5 +1,4 @@
 flask-mongoengine
-Flask-Assets
 Flask-RESTful
-bcrypt
-bs4
+flask-security
+flask-script
