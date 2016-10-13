@@ -1,6 +1,6 @@
 import functools
 import bs4
-
+from htmlmin import minify
 #########################################################
 # Both of the following functions use BeautifulSoup to  #
 # parse html and change the output. In the case of the  #
@@ -23,7 +23,9 @@ def uglify(route_function):
     @functools.wraps(route_function)
     def wrapped(*args, **kwargs):
         yielded_html = route_function(*args, **kwargs)
-        soup = bs4.BeautifulSoup(yielded_html, 'html.parser')
-        return str(soup)
+        minified = minify(yielded_html,
+                          remove_comments=True,
+                          remove_empty_space=True)
+        return str(minified)
 
     return wrapped

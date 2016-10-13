@@ -5,7 +5,7 @@ Starting point for execution of the server
 import warnings
 import mrmccue.helpers
 import flask
-from flask import Flask, render_template
+from flask import Flask
 from flask_security import Security, MongoEngineUserDatastore
 
 #####################################################
@@ -67,4 +67,4 @@ app.register_blueprint(location_tracker,url_prefix='/api')
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return flask.render_template('index.html')
