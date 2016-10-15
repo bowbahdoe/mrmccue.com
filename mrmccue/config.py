@@ -9,8 +9,10 @@ SECRET_KEY = 'you-will-never-guess'
 # and mongoengine
 MONGODB_SETTINGS = {
     'db': 'mrmccue',
-    'host': 'localhost',
-    'port': 27017
+    'host': 'ds059306.mlab.com',
+    'port': 59306,
+    'username': 'bowbahdoe',
+    'password': 'pie1222'
 }
 
 # Flask-Security config

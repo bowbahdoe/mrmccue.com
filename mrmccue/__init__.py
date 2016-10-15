@@ -62,8 +62,11 @@ from mrmccue.models.user import User, Role
 user_datastore = MongoEngineUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
 
-from location_tracker.views import location_tracker
-app.register_blueprint(location_tracker,url_prefix='/api')
+def register_blueprints(app):
+    from location_tracker.views import location_tracker
+    app.register_blueprint(location_tracker,url_prefix='/api')
+
+register_blueprints(app)
 
 @app.route('/')
 def index():
